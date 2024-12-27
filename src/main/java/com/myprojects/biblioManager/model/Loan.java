@@ -26,4 +26,7 @@ public class Loan {
         this.returnDate = returnDate;
         this.isActive = true; // L'emprunt est actif par défaut
     }
+
+    public Loan() {
+    }
 }

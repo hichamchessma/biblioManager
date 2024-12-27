@@ -21,8 +21,11 @@ public class LoanService {
         Optional<Loan> optionalLoan = loanRepository.findById(id);
         if (optionalLoan.isPresent()) {
             Loan loan = optionalLoan.get();
+            loan.setBookId(loanDetails.getBookId());
+            loan.setUserId(loanDetails.getUserId());
+            loan.setStartDate(loanDetails.getStartDate());
             loan.setReturnDate(loanDetails.getReturnDate());
-            loan.setActive(false); // Marquer l'emprunt comme inactif lors du retour
+            loan.setActive(loanDetails.isActive()); // Marquer l'emprunt comme inactif lors du retour
             return loanRepository.save(loan);
         }
         return null; // ou lancer une exception

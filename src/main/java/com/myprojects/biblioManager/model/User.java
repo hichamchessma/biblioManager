@@ -24,7 +24,8 @@ public class User {
         this.registeredDate = registeredDate;
     }
 
-
+    public User() {
+    }
 
     @Override
     public String toString() {

@@ -8,7 +8,7 @@ import com.myprojects.biblioManager.service.UserService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public class UserController {
 
     @Autowired

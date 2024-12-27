@@ -24,6 +24,7 @@ public class UserService {
             user.setUsername(userDetails.getUsername());
             user.setEmail(userDetails.getEmail());
             user.setPassword(userDetails.getPassword());
+            user.setRegisteredDate(userDetails.getRegisteredDate());
             return userRepository.save(user);
         }
         return null; // ou lancer une exception

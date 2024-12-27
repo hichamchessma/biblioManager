@@ -8,7 +8,7 @@ import com.myprojects.biblioManager.service.LoanService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/loans")
+@RequestMapping("/api/loans")
 public class LoanController {
 
     @Autowired
