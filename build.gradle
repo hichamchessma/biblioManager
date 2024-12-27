@@ -60,6 +60,9 @@ dependencies {
 	// JUnit 4 (legacy support)
 	implementation 'junit:junit:4.13.1'
 
+	// Swagger dependencies
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
+
 	// Test dependencies
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	//testImplementation 'org.springframework.security:spring-security-test'
@@ -73,4 +76,3 @@ tasks.named('test') {
 	// Ensure JUnit 5 is used
 	useJUnitPlatform()
 }
-

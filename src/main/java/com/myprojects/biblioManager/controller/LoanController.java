@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import com.myprojects.biblioManager.model.Loan;
 import com.myprojects.biblioManager.service.LoanService;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/loans")
@@ -13,6 +14,16 @@ public class LoanController {
 
     @Autowired
     private LoanService loanService;
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Loan> getLoanById(@PathVariable Long id) {
+        Optional<Loan> loan = loanService.getLoanById(id);
+        if (loan.isPresent()) {
+            return ResponseEntity.ok(loan.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     @PostMapping
     public Loan createLoan(@RequestBody Loan loan) {
@@ -26,6 +37,11 @@ public class LoanController {
             return ResponseEntity.ok(updatedLoan);
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping
+    public List<Loan> getAllLoans() {
+        return loanService.listLoanHistory();
     }
 
     @GetMapping("/active")

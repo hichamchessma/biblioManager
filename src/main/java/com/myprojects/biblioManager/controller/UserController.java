@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import com.myprojects.biblioManager.model.User;
 import com.myprojects.biblioManager.service.UserService;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
@@ -13,6 +14,16 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+        Optional<User> user = userService.getUserById(id);
+        if (user.isPresent()) {
+            return ResponseEntity.ok(user.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     @PostMapping
     public User createUser(@RequestBody User user) {

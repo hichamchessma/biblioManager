@@ -1,5 +1,6 @@
 package com.myprojects.biblioManager.service;
 
+import com.myprojects.biblioManager.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.myprojects.biblioManager.model.Loan;
@@ -16,7 +17,9 @@ public class LoanService {
     public Loan createLoan(Loan loan) {
         return loanRepository.save(loan);
     }
-
+    public Optional<Loan> getLoanById(Long id) {
+        return loanRepository.findById(id);
+    }
     public Loan updateLoan(Long id, Loan loanDetails) {
         Optional<Loan> optionalLoan = loanRepository.findById(id);
         if (optionalLoan.isPresent()) {
